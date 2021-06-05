@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 //import PropTypes from 'prop-types';
+import Products from "./Products";
 import './App.css';
 
 const productCategories = [
@@ -20,14 +21,16 @@ const countries = [
   "Бразилия"
 ];
 
+//const root = document.querySelector('#root');
+
 class ProductForm extends Component {
   state = {     //присваивание инстансу класса объект состояния
-    productId: '',
-    title: '',
+    productId: '1',
+    title: 'a',
     about: '',
     link: '',
     categories: [],
-    productType: '',
+    productType: 'product type 1',
     discount: false,
     country: '- select -',
   };
@@ -160,13 +163,15 @@ class ProductForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault(); // отменяем отправку формы браузером
     console.log("submit");
+    //if (!root) return;
    // делаем что-то
   };
+
 
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="myFormClassName">
 
           <div>
             <label><span>Product Id </span>
@@ -259,6 +264,19 @@ class ProductForm extends Component {
           </div>
 
         </form>
+
+        <div className="cards">
+          <Products
+            productId = {this.state.productId}
+            title = {this.state.title}
+            about = {this.state.about}
+            link = {this.state.link}
+            categories = {this.state.categories}
+            productType = {this.state.productType}
+            discount = {this.state.discount}
+            country = {this.state.country}
+          />
+        </div>
         </>
     )
   }
