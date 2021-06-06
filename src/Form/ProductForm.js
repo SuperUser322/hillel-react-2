@@ -33,30 +33,28 @@ class ProductForm extends Component {
     productType: 'product type 1',
     discount: false,
     country: '- select -',
+    errorTitleMessage: null,
+    errorTextareaMessage: null,
+
   };
 
   handleIdInput = (e) => {
-    let val = e.target.value,
-    errorIdMessage = null;
+    let val = e.target.value;
 
     if (val.length && !/^\d+$/gmi.test(val)) {      //валидация
       val = val.replace(/\D/gmi, '');       //форматирование
-      errorIdMessage = "Значение поля должно содержать только цифры!";
     }
 
     this.setState({     //запрос на обновление
       productId: val,
-      errorIdMessage,
     });
   };
 
   handleTitleInput = (e) => {
-    let val = e.target.value,
-    errorTitleMessage = null;
+    let val = e.target.value;
 
     if (val.length > 50 ) {
-      errorTitleMessage = "Значение должно быть не более 50 символов!";
-      this.setState({errorTitleMessage});
+      this.setState({errorTitleMessage: 'Значение должно быть не более 50 символов!'});
     }
     else {
       this.setState({
@@ -68,12 +66,10 @@ class ProductForm extends Component {
   };
 
   handleTextareaMessage = (e) => {
-    let val = e.target.value,
-    errorTextareaMessage = null;
+    let val = e.target.value;
 
     if (val.length > 200 ) {
-      errorTextareaMessage = "Значение должно быть не более 200 символов!";
-      this.setState({errorTextareaMessage});
+      this.setState({errorTextareaMessage: "Значение должно быть не более 200 символов!"});
     }
     else {
       this.setState({
@@ -163,7 +159,6 @@ class ProductForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault(); // отменяем отправку формы браузером
     console.log("submit");
-    //if (!root) return;
    // делаем что-то
   };
 

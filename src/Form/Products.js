@@ -8,6 +8,7 @@ class Products extends Component {
   };
 
   render(){
+    console.log(this.state);
     return (
       <>
           <ProductList

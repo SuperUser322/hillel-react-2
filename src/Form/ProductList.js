@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class ProductsList extends Component {
   state = {
     state: this.props,
-  }
+  };
 
   render(){
     return (
